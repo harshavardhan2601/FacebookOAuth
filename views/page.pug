@@ -1,0 +1,15 @@
+nav.navbar.navbar-expand-md.bg-dark.navbar-dark
+	a.navbar-brand(href='#') Dashboard 
+	button.navbar-toggler(type='button', data-toggle='collapse', data-target='#collapsibleNavbar')
+		span.navbar-toggler-icon
+	#collapsibleNavbar.collapse.navbar-collapse
+		ul.navbar-nav
+			li.nav-item
+				a.nav-link(href='/dashboard') Profile
+			li.nav-item
+				a.nav-link(href='/Edit') Edit Profile
+			li.nav-item
+				a.nav-link(href='/Change') Change Password
+		ul.navbar-nav.ml-auto
+			li.nav-item
+				a.nav-link(href='/logout') Logout

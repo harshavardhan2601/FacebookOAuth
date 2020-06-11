@@ -1,0 +1,31 @@
+html
+	include header.pug
+	head
+		title login
+	body
+		.container-fluid.p-3.mt-4
+			form(action='/page', method='post')
+				.col-md-6.offset-md-3.text-center.mt-3.p-3
+					//- h1(style='color:black') Sign in
+					h1.text-center.mb-3
+						|  Sign in
+					.row.p-2
+						.col-md-6
+							a.button.btn.btn-primary.mb-1.form-control(type='button', href='/facebook')
+								i.fa.fa-facebook
+								|  Sign in Facebook
+						.col-md-6
+							a.button.btn.btn-danger.form-control(type='button', href='#')
+								i.fa.fa-google
+								|  Sign in Google
+					.some.p-2.text-center
+						h5 OR
+					.col-md-12
+						.form-group
+							input.form-control.myint(type='Email', name='email', placeholder='Email', autocomplete='off')
+						.form-group
+							input#password-field.form-control.myint(type='password' , name='password', placeholder='password', autocomplete='off')
+					.col-md-12
+						input.btn.btn-dark.form-control.mb-1(type='submit', value='Sign in')
+					.one.p-2
+						a(href='/forgot') Forgot Password
