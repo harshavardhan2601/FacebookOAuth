@@ -5,7 +5,7 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var mongoose = require("mongoose");
 var passport = require('passport');
-var GoogleStrategy = require('passport-google-oauth20').Strategy;
+var FacebookStrategy = require('passport-facebook').Strategy;
 var session = require('express-session');
 
 var indexRouter = require('./routes/index');
