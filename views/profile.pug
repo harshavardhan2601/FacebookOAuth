@@ -5,4 +5,31 @@ html
 		title Profile
 		style.
 	body
-		b=newSignupObj
+		//- b=newSignupObj
+		.container-fluid
+			.col-md-12.mt-3
+				h1.text-center Profile
+				for data in newSignupObj
+					.row.mb-3
+						.col-md-2
+							label Name:
+						.col-md-10
+							span=data.name
+					.row.mb-3
+						.col-md-2
+							label Email:
+						.col-md-10
+							span=data.email
+					if(data.password)
+						.row.mb-3
+							.col-md-2
+								label Password:
+							.col-md-10
+								span=data.password
+					if(data.file_attach1)
+						.row.mb-3
+							.col-md-2
+								label Profile:
+							.col-md-10
+								-var dataImage = data.file_attach1
+									img(src=dataImage,width='50px',height='50px')
