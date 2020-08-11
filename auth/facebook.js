@@ -24,7 +24,7 @@ passport.serializeUser(function (user, done) {
     proxy:true
   },
   function(accessToken, refreshToken, profile, done) {
-    // console.log(profile);
+    console.log(profile);
     mongoose.model('User').findOne({ facebook: profile.id }, function (err, user) {
         if (err) {
           throw err;
