@@ -8,8 +8,22 @@ nav.navbar.navbar-expand-md.bg-dark.navbar-dark
 				a.nav-link(href='/profile') Profile
 			li.nav-item
 				a.nav-link(href='/Edit') Edit Profile
-			li.nav-item
+			li.nav-item#dis
 				a.nav-link(href='/Change') Change Password
 		ul.navbar-nav.ml-auto
 			li.nav-item
 				a.nav-link(href='/logout') Logout
+	
+	script.
+		$(document).ready(function ($) {
+			$.get('/page_veriy_user',function(data){
+				console.log(data.data.facebook); 
+				if(data.data.facebook != '' && data.data.facebook != undefined ){
+					$("#dis").hide()
+				}
+				else{
+					$("#dis").show()
+				}
+				
+			});
+		});

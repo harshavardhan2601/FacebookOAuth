@@ -44,6 +44,27 @@ router.post('/page', function (req, res, next) {
     })
 });
 
+
+router.get('/page_veriy_user', function (req, res, next) {
+  var u_id = req.session.user_id;
+  var email = req.session.email_id;
+  console.log(u_id)
+  if (u_id != '' && u_id != undefined) {
+    mongoose.model('User').findById({ _id : u_id,email:email }, function (err, data) {
+      if (err) { console.log(err) }
+      else {
+        console.log(data);
+        console.log("data")
+        res.json({ "data": data });
+      }
+
+    });
+  } else {
+    res.json({ "data": 'failure' })
+  }
+
+});
+
 /* GET home page. */
 router.get('/', function(req, res, next) {
   res.render('welcome', { title: 'Express' });
@@ -76,6 +97,30 @@ router.post('/signup',function (req,res,next) {
 router.get('/dashboard',function (req,res,next) {
   res.render('dashboard');
 });
+
+router.get('/Change',function (req,res,next) {
+  res.render('change');
+});
+
+router.post('/changepassword',function (req,res,next) {
+  var reqs = req.body;
+  console.log(reqs);
+  var s = req.session.user_id
+  console.log(s);
+  mongoose.model('User').findByIdAndUpdate({_id:s},{
+    $set:{
+      password: reqs.newpass
+    }
+  },function (err,pass) {
+    if (err) {
+      console.log(err)
+    } else {
+      console.log(pass);
+      res.send({pass});
+    }
+  })
+});
+
 
 router.get('/profile', function (req, res, next) {
   var s = req.session.user_id

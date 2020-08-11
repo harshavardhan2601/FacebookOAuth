@@ -1,0 +1,40 @@
+html
+	head
+		include header.pug
+		include page.pug
+	body
+		.container-fluid
+			.row.mt-5
+			.col-md-6.m-auto
+				.card.card-body
+					h1.text-center.mb-3 Change Password
+					.form-group
+						label(for='password') New Password
+						input#password.form-control(type='password', name='newpassword', placeholder='New Password')
+					.form-group
+						label(for='password2') Confirm Password
+						input#password2.form-control(type='password', name='password2', placeholder='Confirm Password')
+					button.btn.btn-primary#passcheck(type='submit' ) Submit
+		script.
+			$('#passcheck').click(function(){
+				var confirm = $('#password2').val();
+				var newpass = $('#password').val();
+				console.log(confirm);
+				console.log(newpass);
+				if(confirm == ''){
+					alert('Please Enter Confirm Password')
+					//- alert('New Password Not Equal To Confirm Password')
+				}
+				else if(confirm != newpass){
+					alert('New Password Not Equal To Confirm Password')
+				}
+
+				$.post('/changepassword',{newpass},function(data){
+					//- window.location.reload();
+					console.log(data);
+					console.log('password')
+					alert('password changed')
+					window.location.reload();
+
+				});
+			});
